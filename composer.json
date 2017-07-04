@@ -1,0 +1,21 @@
+{
+  "name": "wunder/docebo-php",
+  "description": "Docebo API PHP client",
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.1",
+    "symfony/http-foundation": "^2.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.4"
+  },
+  "authors": [
+    {
+      "name": "Artis Bajārs",
+      "email": "artis.bajars@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"Docebo\\": "src/Docebo"}
+  }
+}
