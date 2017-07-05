@@ -7,6 +7,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 interface DoceboInterface {
 
   /**
+   * @param string $path
+   * @param string $cursor
+   * @param int $page
+   * @return JsonResponse
+   */
+  public function getPage($path, $cursor, $page);
+
+  /**
    * @param int $course_id
    * @return JsonResponse
    */

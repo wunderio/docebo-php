@@ -119,6 +119,18 @@ class Docebo implements DoceboInterface {
   }
 
   /**
+   * @inheritdoc
+   */
+  public function getPage($path, $cursor, $page) {
+    $parameters = [
+      'cursor' => $cursor,
+      'page' => $page
+    ];
+
+    return $this->get($path, $parameters);
+  }
+
+  /**
    * @return Client
    */
   protected function getHttpClient() {
