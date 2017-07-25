@@ -242,4 +242,13 @@ class Docebo implements DoceboInterface {
     );
   }
 
+  /**
+   * Utility method to return the base url.
+   *
+   * @return string the base url used to connect to docebo.
+   */
+  public function getBaseUrl() {
+    return $this->baseUrl;
+  }
+
 }
