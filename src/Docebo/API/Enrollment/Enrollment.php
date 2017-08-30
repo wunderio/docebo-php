@@ -17,16 +17,18 @@ class Enrollment extends BaseApi {
    * @param int $rating
    * @param int $channel
    * @param string $search
+   * @param int $page_size
    * @return JsonResponse
    */
-  public function enrollments($id_user, $status, $type, $rating, $channel, $search) {
+  public function enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size) {
     $parameters = [
       'id_user' => $id_user,
       'status' => $status,
       'type' => $type,
       'rating' => $rating,
       'channel' => $channel,
-      'search' => $search
+      'search' => $search,
+      'page_size' => $page_size
     ];
 
     return $this->docebo->get(self::PATH_LIST_ENROLLMENTS, $parameters);
