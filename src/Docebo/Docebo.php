@@ -107,8 +107,8 @@ class Docebo implements DoceboInterface {
   /**
    * @inheritdoc
    */
-  public function listEnrollments($id_user = [], $status = [], $type = [], $rating = NULL, $channel = NULL, $search = NULL, $page_size = NULL) {
-    return $this->enrollment->enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size);
+  public function listEnrollments($id_user = [], $status = [], $type = [], $rating = NULL, $channel = NULL, $search = NULL, $page_size = NULL, $get_total_count = FALSE) {
+    return $this->enrollment->enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size, $get_total_count);
   }
 
   /**
