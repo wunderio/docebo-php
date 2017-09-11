@@ -55,7 +55,7 @@ class Docebo implements DoceboInterface {
    * @throws \Exception if user name, password and token are all empty.
    */
   public function __construct($baseUrl, $clientId = NULL, $clientSecret = NULL, $userName = NULL, $password = NULL, $token = NULL, Client $client = NULL) {
-    if (empty($userName) && empty($password) && empty($clientId) && empty($clientSecret) && empty($token)) {
+    if ((empty($userName) || empty($password) || empty($clientId) || empty($clientSecret)) && empty($token)) {
       throw new \Exception('User name, password, client ID and secret are required when token is empty.');
     }
 
