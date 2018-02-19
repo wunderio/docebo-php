@@ -23,7 +23,7 @@ class Enrollment extends BaseApi {
    * @param	array[string] $code_course
    * @return JsonResponse
    */
-  public function enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size, $get_total_count, $id_course, $code_course) {
+  public function enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size, $get_total_count, $id_course, $code_course, $get_cursor = 1) {
     $parameters = [
       'id_user' => $id_user,
       'status' => $status,
@@ -35,6 +35,7 @@ class Enrollment extends BaseApi {
       'get_total_count' => $get_total_count,
       'id_course' => $id_course,
       'code_course' => $code_course,
+      'get_cursor' => $get_cursor,
     ];
 
     return $this->docebo->get(self::PATH_LIST_ENROLLMENTS, $parameters);
