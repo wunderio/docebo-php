@@ -39,9 +39,15 @@ interface DoceboInterface {
    * @param string $search
    * @param int $page_size
    * @param bool $get_total_count
+   * @param array[int] $id_course
+   * @param array[string] $code_course
+   * @param array[int] $id_learning_plan
+   * @param array[string] $code_learning_plan
+   * @param string $level
+   * @param string $sort_by
    * @return JsonResponse
    */
-  public function listEnrollments($id_user = [], $status = [], $type = [], $rating = NULL, $channel = NULL, $search = NULL, $page_size = NULL, $get_total_count = FALSE);
+  public function listEnrollments($id_user = [], $status = [], $type = [], $rating = NULL, $channel = NULL, $search = NULL, $page_size = NULL, $get_total_count = FALSE, $id_course = [], $code_course = [], $id_learning_plan = [], $code_learning_plan = [], $level = NULL, $sort_by = NULL);
 
   /**
    * @param int $pending

@@ -20,10 +20,14 @@ class Enrollment extends BaseApi {
    * @param int $page_size
    * @param bool $get_total_count
    * @param array[int] $id_course
-   * @param	array[string] $code_course
+   * @param array[string] $code_course
+   * @param array[int] $id_learning_plan
+   * @param array[string] $code_learning_plan
+   * @param string $level
+   * @param string $sort_by
    * @return JsonResponse
    */
-  public function enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size, $get_total_count, $id_course, $code_course, $get_cursor = 1) {
+  public function enrollments($id_user, $status, $type, $rating, $channel, $search, $page_size, $get_total_count, $id_course, $code_course, $id_learning_plan, $code_learning_plan, $level, $sort_by, $get_cursor = 1) {
     $parameters = [
       'id_user' => $id_user,
       'status' => $status,
@@ -35,6 +39,10 @@ class Enrollment extends BaseApi {
       'get_total_count' => $get_total_count,
       'id_course' => $id_course,
       'code_course' => $code_course,
+      'id_learning_plan' => $id_learning_plan,
+      'code_learning_plan' => $code_learning_plan,
+      'level' => $level,
+      'sort_by' => $sort_by,
       'get_cursor' => $get_cursor,
     ];
 
