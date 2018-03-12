@@ -4,6 +4,7 @@ namespace Docebo;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Docebo\API\Enrollment\EnrollmentRequestParams;
+use Docebo\API\LearningPlan\LearningPlanRequestParams;
 
 interface DoceboInterface {
 
@@ -36,6 +37,12 @@ interface DoceboInterface {
    * @return JsonResponse
    */
   public function listEnrollments(EnrollmentRequestParams $params);
+
+  /**
+   * @param LearningPlanRequestParams $params
+   * @return JsonResponse
+   */
+  public function getLearningPlan(LearningPlanRequestParams $params);
 
   /**
    * @param int $pending

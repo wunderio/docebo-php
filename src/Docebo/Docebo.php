@@ -8,8 +8,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Docebo\API\Auth\Auth;
 use Docebo\API\Course\Course;
 use Docebo\API\Enrollment\Enrollment;
+use Docebo\API\LearningPlan\LearningPlan;
 use Docebo\API\User\User;
 use Docebo\API\Enrollment\EnrollmentRequestParams;
+use Docebo\API\LearningPlan\LearningPlanRequestParams;
 
 class Docebo implements DoceboInterface {
 
@@ -35,6 +37,9 @@ class Docebo implements DoceboInterface {
 
   /** @var Enrollment */
   private $enrollment;
+
+  /** @var LearningPlan */
+  private $learningPlan;
 
   /** @var User */
   private $user;
@@ -65,6 +70,7 @@ class Docebo implements DoceboInterface {
     $this->auth = $this->getAuthService();
     $this->course = $this->getCourseService();
     $this->enrollment = $this->getEnrollmentService();
+    $this->learningPlan = $this->getLearningPlanService();
     $this->user = $this->getUserService();
 
     $this->requestOptionsBuilder = $this->getRequestOptionsBuilder();
@@ -110,6 +116,13 @@ class Docebo implements DoceboInterface {
    */
   public function listEnrollments(EnrollmentRequestParams $params) {
     return $this->enrollment->enrollments($params);
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function getLearningPlan(LearningPlanRequestParams $params) {
+    return $this->learningPlan->learningPlan($params);
   }
 
   /**
@@ -165,6 +178,13 @@ class Docebo implements DoceboInterface {
    */
   protected function getEnrollmentService() {
     return new Enrollment($this);
+  }
+
+  /**
+   * @return LearningPlan
+   */
+  protected function getLearningPlanService() {
+    return new LearningPlan($this);
   }
 
   /**
