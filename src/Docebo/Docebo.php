@@ -12,6 +12,7 @@ use Docebo\API\LearningPlan\LearningPlan;
 use Docebo\API\User\User;
 use Docebo\API\Enrollment\EnrollmentRequestParams;
 use Docebo\API\LearningPlan\LearningPlanRequestParams;
+use Docebo\API\User\UserRequestParams;
 
 class Docebo implements DoceboInterface {
 
@@ -128,8 +129,8 @@ class Docebo implements DoceboInterface {
   /**
    * @inheritdoc
    */
-  public function listUsers($pending = NULL, $branch_id = NULL, $selection_status = NULL, $sort_attr = NULL, $sort_dir = NULL, $page = NULL, $page_size = NULL, $get_total_count = NULL, $search_text = NULL, $exclude = NULL, $exclude_power_users_and_super_admins = NULL) {
-    return $this->user->users($pending, $branch_id, $selection_status, $sort_attr, $sort_dir, $page, $page_size, $get_total_count, $search_text, $exclude, $exclude_power_users_and_super_admins);
+  public function listUsers(UserRequestParams $params) {
+    return $this->user->users($params);
   }
 
   /**

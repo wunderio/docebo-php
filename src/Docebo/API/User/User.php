@@ -4,6 +4,7 @@ namespace Docebo\API\User;
 
 use Docebo\API\BaseApi;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Docebo\API\User\UserRequestParams;
 
 class User extends BaseApi {
 
@@ -11,32 +12,25 @@ class User extends BaseApi {
   const PATH_LIST_USERS = self::PATH_BASE . 'user';
 
   /**
-   * @param int $pending
-   * @param int $branch_id
-   * @param int $selection_status
-   * @param string $sort_attr
-   * @param string $sort_dir
-   * @param int $page
-   * @param int $page_size
-   * @param int $get_total_count
-   * @param string $search_text
-   * @param array $exclude
-   * @param int $exclude_power_users_and_super_admins
-   * @return JsonResponse
+   * Retrieves users based on the request params.
+   *
+   * @param \Docebo\API\User\UserRequestParams $params
+   *   The params object.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
-  public function users($pending, $branch_id, $selection_status, $sort_attr, $sort_dir, $page, $page_size, $get_total_count, $search_text, $exclude, $exclude_power_users_and_super_admins) {
+  public function users(UserRequestParams $params) {
     $parameters = [
-      'pending' => $pending,
-      'branch_id' => $branch_id,
-      'selection_status' => $selection_status,
-      'sort_attr' => $sort_attr,
-      '$sort_dir' => $sort_dir,
-      'page' => $page,
-      'page_size' => $page_size,
-      'get_total_count' => $get_total_count,
-      'search_text' => $search_text,
-      'exclude' => $exclude,
-      'exclude_power_users_and_super_admins' => $exclude_power_users_and_super_admins
+      'pending' => $params->getPending(),
+      'branch_id' => $params->getBranchId(),
+      'selection_status' => $params->getSelectionStatus(),
+      'sort_attr' => $params->getSortAttr(),
+      '$sort_dir' => $params->getSortDir(),
+      'page' => $params->getPage(),
+      'page_size' => $params->getPage(),
+      'search_text' => $params->getSearchText(),
+      'exclude' => $params->getExclude(),
+      'exclude_power_users_and_super_admins' => $params->getExcludePowerUsersAndSuperAdmins()
     ];
 
     return $this->docebo->get(self::PATH_LIST_USERS, $parameters);

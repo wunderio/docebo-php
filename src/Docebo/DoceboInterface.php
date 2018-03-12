@@ -5,6 +5,7 @@ namespace Docebo;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Docebo\API\Enrollment\EnrollmentRequestParams;
 use Docebo\API\LearningPlan\LearningPlanRequestParams;
+use Docebo\API\User\UserRequestParams;
 
 interface DoceboInterface {
 
@@ -45,18 +46,8 @@ interface DoceboInterface {
   public function getLearningPlan(LearningPlanRequestParams $params);
 
   /**
-   * @param int $pending
-   * @param int $branch_id
-   * @param int $selection_status
-   * @param string $sort_attr
-   * @param string $sort_dir
-   * @param int $page
-   * @param int $page_size
-   * @param int $get_total_count
-   * @param string $search_text
-   * @param array $exclude
-   * @param int $exclude_power_users_and_super_admins
+   * @param UserRequestParams $params
    * @return JsonResponse
    */
-  public function listUsers($pending = NULL, $branch_id = NULL, $selection_status = NULL, $sort_attr = NULL, $sort_dir = NULL, $page = NULL, $page_size = NULL, $get_total_count = NULL, $search_text = NULL, $exclude = NULL, $exclude_power_users_and_super_admins = NULL);
+  public function listUsers(UserRequestParams $params);
 }
