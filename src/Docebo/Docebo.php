@@ -13,6 +13,7 @@ use Docebo\API\User\User;
 use Docebo\API\Enrollment\EnrollmentRequestParams;
 use Docebo\API\LearningPlan\LearningPlanRequestParams;
 use Docebo\API\User\UserRequestParams;
+use Docebo\API\Course\CourseRequestParams;
 
 class Docebo implements DoceboInterface {
 
@@ -101,15 +102,15 @@ class Docebo implements DoceboInterface {
   /**
    * @inheritdoc
    */
-  public function getCourse($course_id) {
-    return $this->course->course($course_id);
+  public function getCourse(CourseRequestParams $params) {
+    return $this->course->course($params);
   }
 
   /**
    * @inheritdoc
    */
-  public function listCourses($page = NULL, $page_size = NULL, $sort_by = NULL, $sort_by_direction = NULL, $get_total_count = NULL) {
-    return $this->course->courses($page, $page_size, $sort_by, $sort_by_direction, $get_total_count);
+  public function listCourses(CourseRequestParams $params) {
+    return $this->course->courses($params);
   }
 
   /**
