@@ -4,6 +4,7 @@ namespace Docebo\API\Course;
 
 use Docebo\API\BaseApi;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Docebo\API\Course\CourseRequestParams;
 
 class Course extends BaseApi {
 
@@ -11,28 +12,33 @@ class Course extends BaseApi {
   const PATH_LIST_COURSES = self::PATH_BASE . 'courses';
 
   /**
-   * @param int $course_id
-   * @return JsonResponse
+   * Retrieves a specific course
+   *
+   * @param \Docebo\API\Course\CourseRequestParams $params
+   *   The params object.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
-  public function course($course_id) {
-    return $this->docebo->get(self::PATH_LIST_COURSES . '/' . $course_id);
+  public function course(CourseRequestParams $params) {
+    return $this->docebo->get(self::PATH_LIST_COURSES . '/' . $params->getCourseId());
   }
 
   /**
-   * @param int $page
-   * @param int $page_size
-   * @param string $sort_by
-   * @param string $sort_by_direction
-   * @param bool $get_total_count
-   * @return JsonResponse
+   * Retrieves courses based on the request params.
+   *
+   * @param \Docebo\API\Course\CourseRequestParams $params
+   *   The params object.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
-  public function courses($page, $page_size, $sort_by, $sort_by_direction, $get_total_count) {
+  public function courses(CourseRequestParams $params) {
     $parameters = [
-      'page' => $page,
-      'page_size' => $page_size,
-      'sort_by' => $sort_by,
-      'sort_by_direction' => $sort_by_direction,
-      'get_total_count' => $get_total_count
+      'page' => $params->getPage(),
+      'page_size' => $params->getPageSize(),
+      'sort_by' => $params->getSortBy(),
+      'sort_by_direction' => $params->getSortByDirection(),
+      'get_total_count' => $params->isGetTotalCount(),
+      'get_cursor' => $params->isGetCursor()
     ];
 
     return $this->docebo->get(self::PATH_LIST_COURSES, $parameters);
