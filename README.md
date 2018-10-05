@@ -2,6 +2,17 @@
 
 ## Installation
 
+Define an additional repository in your composer.json:
+
+```
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/wunderio/docebo-php"
+    }
+]
+```
+
 ```sh
 composer require wunder/docebo-php
 ```
